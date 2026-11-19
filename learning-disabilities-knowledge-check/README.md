@@ -1,34 +1,33 @@
-# Learning disabilities knowledge check
+# Supporting employees with learning disabilities
 
-A React + TypeScript + Vite instructional design portfolio demonstration.
-The app contains five questions with feedback, including two written-response
-questions. Responses are kept only in browser memory and reset on reload.
-No backend, database, API keys, or Replit account is required to run this export.
+An interactive e-learning self-assessment for managers, adapted from instructional materials I developed in 2012 and revisited in 2026 as part of my instructional design portfolio.
 
-## Add to the existing portfolio repository
+The assessment includes five questions exploring workplace accommodations, managerial responsibilities and employee privacy. Learners receive explanatory feedback and can compare their written responses to sample responses.
 
-1. Extract the ZIP. It contains one `learning-disabilities-knowledge-check` folder.
-2. Copy that folder into the root of your existing `portfolio` repository.
-   Do not replace your portfolio's root files.
-3. Commit and push the added folder. If using GitHub's website, open your
-   `portfolio` repository, choose **Add file → Upload files**, and drag the
-   extracted folder into the upload area. Upload the extracted folder, not the ZIP.
+[Try the interactive demo](https://knowledge-check-demo.replit.app)
 
-This adds the source code only. It does not change your portfolio homepage,
-configure hosting, or automatically publish the app.
+## Learning design
 
-## Run locally
+- Self-paced formative assessment
+- Multiple-choice and multiple-selection questions
+- Scenario-based written responses
+- Explanatory feedback and annotated sample responses
+- Opportunities for reflection and response revision
 
-Install Node.js 22.12 or newer, then run from inside this folder:
+## Development
+
+Built with React, TypeScript and Vite. The application runs entirely in the browser. Learner responses are not stored or transmitted and are cleared when the page is reloaded.
+
+## Running locally
+
+Requires Node.js 22.12 or later.
 
 ```sh
 npm install
 npm run dev
 ```
 
-Open the local address printed by Vite.
-
-## Check and build
+## Production build
 
 ```sh
 npm run typecheck
@@ -36,24 +35,14 @@ npm run build
 npm run preview
 ```
 
-The production website is generated in `dist/`. A static hosting service should
-use this folder as the project root, `npm run build` as the build command, and
-`dist` as the output directory.
+The production build is generated in `dist/`.
 
-If hosting under a URL subpath, set `BASE_PATH` to the actual public URL path
-with a trailing slash before building. The folder name in your GitHub repository
-does not necessarily match the website's URL path.
+When deploying to a URL subpath, set `BASE_PATH` to the public URL path, including a trailing slash, before building.
 
-The app uses externally hosted Google Fonts; system font fallbacks are supplied.
+The application uses Google Fonts with system font fallbacks.
 
-## Content
+## Copyright
 
 All written content © 2012, 2026 Emily Sheepy. All rights reserved.
 
-This e-learning demonstration was developed for portfolio purposes and is not
-intended as professional training or legal advice. For guidance on workplace
-accommodations, consult current legislation and qualified human resources
-professionals.
-
-The learner-facing wording, feedback, and images are unchanged from the Replit
-app. Only the build configuration was adapted for use outside its workspace.
+This e-learning demonstration is intended for portfolio purposes only. For guidance on workplace accommodations, consult current legislation and qualified professionals.
