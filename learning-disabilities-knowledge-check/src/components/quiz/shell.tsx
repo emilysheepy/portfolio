@@ -22,8 +22,8 @@ export function Shell({ children }: { children: ReactNode }) {
       </main>
       <footer className="border-t border-border/70">
         <div className="mx-auto max-w-5xl px-5 py-6 text-base leading-[1.6] text-muted-foreground sm:px-8">
-          <p className="max-w-[70ch]">All written content © 2012, 2026 Emily Sheepy. All rights reserved.</p>
-          <p className="mt-3 max-w-[70ch]">This e-learning demonstration was developed for portfolio purposes and is not intended as professional training or legal advice. For guidance on workplace accommodations, consult current legislation and qualified human resources professionals.</p>
+          <p>© 2012, 2026 Emily Sheepy. All rights reserved.</p>
+          <p className="mt-3">This e-learning demonstration was developed for portfolio purposes and is not intended as professional training or legal advice. For guidance on workplace accommodations, consult current legislation and qualified human resources professionals.</p>
         </div>
       </footer>
     </div>
