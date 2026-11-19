@@ -24,15 +24,16 @@ export function Intro({ onStart }: { onStart: () => void }) {
           <span className="hero-highlight italic">learning disabilities</span>
         </h1>
         <p className="mt-6 max-w-xl text-xl leading-[1.6] text-muted-foreground max-w-[60ch]">
-          As a manager, you play an important role in helping employees with learning disabilities perform at their best.
+          As a manager, you play an important role in helping employees with learning disabilities succeed in the workplace.
         </p>
         <p className="mt-5 text-xl leading-[1.6] text-muted-foreground max-w-[60ch]">
-          In this self-assessment, you'll apply your knowledge to workplace situations and assess your ability to:
+          Test your knowledge and apply it to realistic workplace situations. This self-assessment gives you an opportunity to:
         </p>
         <ul className="mt-4 list-disc space-y-3 pl-6 text-xl leading-[1.6] text-muted-foreground max-w-[60ch]">
-          <li>Recognize when an employee may need additional support.</li>
-          <li>Respond to accommodation needs effectively and lawfully.</li>
-          <li>Work with employees to develop accommodation plans while respecting their privacy.</li>
+          <li>Check your understanding of learning disabilities and the legal protections afforded to employees.</li>
+          <li>Review the steps involved in identifying workplace barriers.</li>
+          <li>Recommend and evaluate workplace accommodations.</li>
+          <li>Reflect on your responsibilities to protect employees from discrimination and respect their privacy.</li>
         </ul>
 
         <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-3 text-base">
