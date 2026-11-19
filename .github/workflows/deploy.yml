@@ -1,0 +1,58 @@
+name: Deploy portfolio to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - uses: actions/configure-pages@v5
+
+      - name: Install dependencies
+        working-directory: learning-disabilities-knowledge-check
+        run: npm install
+
+      - name: Build knowledge check
+        working-directory: learning-disabilities-knowledge-check
+        env:
+          BASE_PATH: /portfolio/learning-disabilities-knowledge-check/
+        run: npm run build
+
+      - name: Assemble portfolio
+        run: |
+          mkdir -p /tmp/portfolio-site
+          rsync -a --exclude='.git' --exclude='.github' \
+            --exclude='learning-disabilities-knowledge-check' \
+            ./ /tmp/portfolio-site/
+          mkdir -p /tmp/portfolio-site/learning-disabilities-knowledge-check
+          cp -r learning-disabilities-knowledge-check/dist/. \
+            /tmp/portfolio-site/learning-disabilities-knowledge-check/
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: /tmp/portfolio-site
+
+      - uses: actions/deploy-pages@v4
+        id: deployment
