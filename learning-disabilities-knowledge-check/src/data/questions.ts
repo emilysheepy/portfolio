@@ -1,4 +1,9 @@
-export type Choice = { id: string; text: string; feedback: string };
+export type ResponseClassification =
+  | "Problematic response"
+  | "Partially developed response"
+  | "Reasonable response"
+  | "Well-developed response";
+export type Choice = { id: string; text: string; feedback: string; classification?: ResponseClassification };
 export type Answer = { selected: string[]; response?: string };
 export type Question = {
   id: number;
@@ -63,16 +68,19 @@ export const questions: Question[] = [
     choices: [
       {
         id: "a",
+        classification: "Partially developed response",
         text: "“Najeeb could be provided with alternative training from someone who already has their certification. That person could model the procedures for him so he doesn’t have to rely on the written material alone. This accommodation would cost more than a workbook because the company would have to pay whoever trains him, but that wouldn’t break the bank. It’s so close to the test time to set this up, which could be a problem—to give Najeeb a fair chance he might need more time to prepare for the test. This might seem unfair to his coworkers.”",
         feedback: "This is a reasonable suggestion, but the explanation addresses only two of the five key criteria that are used to evaluate the appropriateness of an accommodation (cost and effect on other workers). Try to evaluate this accommodation using some of the other criteria. What if Najeeb’s model doesn’t know the material well?",
       },
       {
         id: "b",
+        classification: "Well-developed response",
         text: "“The task that is difficult for Najeeb involves recalling written information, so the employer could ask a volunteer to read the workbook into a voice recorder. That way, Najeeb can use the recording to review. This would be a solution that allows Najeeb to meet the same safety requirements as the other workers, so it should not have a negative effect on his coworkers, but if it takes him too long to work through the materials, his employer might have to let him take time off. Depending on what his role is, that could be dangerous or costly.”",
         feedback: "This response suggests an accommodation that addresses four of the five criteria for evaluating an accommodation that apply to this scenario, but where cost is concerned, taking two weeks off work is unlikely to damage the company and is not a good reason to rule out this accommodation.",
       },
       {
         id: "c",
+        classification: "Reasonable response",
         text: "“Depending on the kind of training he needs, the employer or the union could provide wordless flowcharts or assist Najeeb in developing them to help him visualize the information. This would be a cheap and safe solution.”",
         feedback: "This is a good suggestion. This explanation addresses three of the five key criteria (safety, cost, and impact of union membership) that are used to evaluate the appropriateness of an accommodation. You could also consider what effect this accommodation could have on Najeeb’s coworkers or on the organization as a whole. For example, other workers might benefit from the development of flowcharts as well.",
       },
@@ -86,16 +94,19 @@ export const questions: Question[] = [
     choices: [
       {
         id: "a",
+        classification: "Problematic response",
         text: "“The manager was insensitive. I would ask Meghan what she wants to say.”",
         feedback: "While the manager was definitely insensitive, this response really misses the mark; the hiring manager’s action isn’t just insensitive but a failure to comply with the obligation to protect Meghan from discrimination. Consider the effect of the manager’s actions on Meghan’s coworkers and on the organization. If she pursues a human rights complaint, there could be very serious consequences for the company.",
       },
       {
         id: "b",
+        classification: "Partially developed response",
         text: "“The manager didn’t respect Meghan’s right to confidentiality. The manager could have told the project lead that Meghan needed to take breaks at certain times without saying why; this would have accommodated Meghan’s need while protecting her privacy.”",
         feedback: "Good. The project lead doesn’t actually need to know why Meghan needs to leave at certain times if she doesn’t want to disclose that information. This unnecessary information could affect Meghan’s relationship with her coworkers. You’ve missed a major issue—why did the manager need to accommodate Meghan to start with?",
       },
       {
         id: "c",
+        classification: "Well-developed response",
         text: "“The hiring manager knew his employer had a duty to protect Meghan from discrimination but actually poked fun at her needs; he then broke the confidentiality agreement that covered the whole accommodation process and finally failed to follow the protocol for evaluating accommodation by failing to consider how his action could affect Meghan’s well-being, the organization itself and how costly this action could be.”",
         feedback: "Excellent. You recognized a failure to comply with the regulations straight away and traced that back to specific departures from the recommended procedures. The employee’s right to privacy was sorely violated in this case and you are absolutely right that the manager’s actions could be costly because he or she did not take the responsibilities of that situation seriously!",
       },

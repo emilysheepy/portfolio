@@ -1,0 +1,86 @@
+@media print {
+  body:has(.answer-review-print) {
+    background: white !important;
+    color: #111;
+  }
+
+  body:has(.answer-review-print)::after,
+  body:has(.answer-review-print) button,
+  body:has(.answer-review-print) a[href="#main"] {
+    display: none !important;
+  }
+
+  .a11y-shell:has(.answer-review-print) {
+    display: block;
+    min-height: 0;
+  }
+
+  .a11y-shell:has(.answer-review-print) main {
+    max-width: none;
+    padding: 0;
+  }
+
+  .answer-review-print {
+    padding-top: 0;
+    color: #111;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .answer-review-print .review-summary {
+    break-inside: avoid;
+    padding: 1rem;
+    border: 1px solid #aaa;
+    border-radius: 1rem;
+    background: white;
+    color: #111;
+  }
+
+  .answer-review-print .review-summary dl {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .answer-review-print h1 { font-size: 22pt; }
+  .answer-review-print h2 { font-size: 18pt; }
+  .answer-review-print h3 { font-size: 14pt; }
+  .answer-review-print h4,
+  .answer-review-print h5 { font-size: 12pt; }
+  .answer-review-print dd { font-size: 26pt; }
+  .answer-review-print p,
+  .answer-review-print dt { font-size: 11pt; line-height: 1.5; }
+
+  .answer-review-print h1,
+  .answer-review-print h2,
+  .answer-review-print h3,
+  .answer-review-print h4,
+  .answer-review-print h5,
+  .answer-review-print header {
+    break-after: avoid;
+  }
+
+  .answer-review-print p {
+    orphans: 3;
+    widows: 3;
+  }
+
+  .answer-review-print li {
+    break-inside: auto;
+    background: white;
+    color: #111;
+  }
+
+  .answer-review-print [data-testid^="feedback-"] {
+    break-inside: avoid;
+    overflow: visible;
+    box-shadow: none;
+  }
+
+  .a11y-shell:has(.answer-review-print) footer {
+    margin-top: 1.5rem;
+  }
+
+  .a11y-shell:has(.answer-review-print) footer p {
+    font-size: 10pt;
+    color: #333;
+  }
+}
