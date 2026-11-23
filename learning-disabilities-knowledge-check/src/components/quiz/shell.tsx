@@ -13,7 +13,7 @@ export function Shell({ children }: { children: ReactNode }) {
         <div className="flex min-w-0 items-center gap-3">
           <Mark />
           <span className="font-display text-xl font-medium tracking-tight" data-testid="text-brand">
-            Considerate
+            Learning Disabilities in the Workplace
           </span>
         </div>
       </header>
@@ -32,7 +32,7 @@ export function Shell({ children }: { children: ReactNode }) {
 
 function Mark() {
   return (
-    <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true">
+    <svg width="26" height="26" viewBox="0 0 32 32" className="shrink-0" aria-hidden="true">
       <circle cx="12" cy="16" r="9" fill="hsl(var(--primary))" />
       <circle cx="20" cy="16" r="9" fill="hsl(var(--accent))" style={{ mixBlendMode: "multiply" }} />
     </svg>
