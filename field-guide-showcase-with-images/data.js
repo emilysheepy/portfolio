@@ -34,7 +34,7 @@ window.DEMOS = [
     "title": "Reflection activity",
     "category": "Interactive learning",
     "description": "A film-based workbook inviting youth to reflect on identity, future aspirations and community support.",
-    "url": "https://docs.google.com/presentation/d/1v9kviZOqUZWp4yCXJ5CioETTjNIf3iP7zGgJfZElqdM/template/preview",
+    "url": "https://docs.google.com/presentation/d/1B6NskcOAQFvzevRzzyoBFIfnK8ZZTkYZN_Gz4l6ANCg/template/preview",
     "thumbnail": "assets/reflection.webp",
     "thumbnailAlt": ""
   },
