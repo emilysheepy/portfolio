@@ -3,6 +3,10 @@ name: Deploy portfolio to GitHub Pages
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - 'README.md'
+      - '.DS_Store'
+      - '**/.DS_Store'
   workflow_dispatch:
 
 permissions:
@@ -12,47 +16,79 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - name: Detect buildable projects
+        id: projects
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import pathlib, json, hashlib, os, subprocess
+          projects = []
+          for p in sorted(pathlib.Path('.').glob('*/package.json')):
+              if json.loads(p.read_text()).get('scripts', {}).get('build'):
+                  projects.append(p.parent.as_posix())
+          h = hashlib.sha256()
+          for p in projects:
+              h.update(subprocess.check_output(['git', 'ls-tree', 'HEAD', '--', p]))
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
+              print('found=' + str(bool(projects)).lower(), file=f)
+              print('key=' + h.hexdigest(), file=f)
+          pathlib.Path('/tmp/build-projects.json').write_text(json.dumps(projects))
+          PY
+      - name: Restore compiled applications
+        if: steps.projects.outputs.found == 'true'
+        id: compiled
+        uses: actions/cache@v4
+        with:
+          path: /tmp/portfolio-builds
+          key: portfolio-builds-v1-node22-${{ runner.os }}-${{ steps.projects.outputs.key }}
+      - uses: actions/setup-node@v4
+        if: steps.projects.outputs.found == 'true' && steps.compiled.outputs.cache-hit != 'true'
+        with:
+          node-version: '22'
+      - name: Build applications when cache is missing
+        if: steps.projects.outputs.found == 'true' && steps.compiled.outputs.cache-hit != 'true'
+        run: |
+          python3 - <<'PY'
+          import pathlib, json, subprocess, os, shutil
+          for project in json.loads(pathlib.Path('/tmp/build-projects.json').read_text()):
+              p = pathlib.Path(project)
+              subprocess.run(['npm', 'ci' if (p/'package-lock.json').exists() else 'install'], cwd=p, check=True)
+              subprocess.run(['npm', 'run', 'build'], cwd=p, env={**os.environ, 'BASE_PATH': f'/portfolio/{project}/'}, check=True)
+              if not (p/'dist'/'index.html').is_file():
+                  raise RuntimeError(f'{project}: expected dist/index.html')
+              shutil.copytree(p/'dist', pathlib.Path('/tmp/portfolio-builds')/project, dirs_exist_ok=True)
+          PY
+      - name: Assemble portfolio
+        run: |
+          mkdir -p /tmp/portfolio-site
+          python3 - <<'PY'
+          import pathlib, json, subprocess, shutil
+          projects = json.loads(pathlib.Path('/tmp/build-projects.json').read_text())
+          args = ['rsync', '-a', '--exclude=.git', '--exclude=.github', '--exclude=node_modules', '--exclude=.DS_Store']
+          args += [f'--exclude=/{p}/' for p in projects]
+          subprocess.run(args + ['./', '/tmp/portfolio-site/'], check=True)
+          for p in projects:
+              shutil.copytree(pathlib.Path('/tmp/portfolio-builds')/p, pathlib.Path('/tmp/portfolio-site')/p, dirs_exist_ok=True)
+          pathlib.Path('/tmp/portfolio-site/.nojekyll').touch()
+          PY
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          name: github-pages
+          path: /tmp/portfolio-site
   deploy:
+    needs: build
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-
     steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-
-      - uses: actions/configure-pages@v5
-
-      - name: Install dependencies
-        working-directory: learning-disabilities-knowledge-check
-        run: npm install
-
-      - name: Build knowledge check
-        working-directory: learning-disabilities-knowledge-check
-        env:
-          BASE_PATH: /portfolio/learning-disabilities-knowledge-check/
-        run: npm run build
-
-      - name: Assemble portfolio
-        run: |
-          mkdir -p /tmp/portfolio-site
-          rsync -a --exclude='.git' --exclude='.github' \
-            --exclude='learning-disabilities-knowledge-check' \
-            ./ /tmp/portfolio-site/
-          mkdir -p /tmp/portfolio-site/learning-disabilities-knowledge-check
-          cp -r learning-disabilities-knowledge-check/dist/. \
-            /tmp/portfolio-site/learning-disabilities-knowledge-check/
-
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: /tmp/portfolio-site
-
       - uses: actions/deploy-pages@v4
         id: deployment
