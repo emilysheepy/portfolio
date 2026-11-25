@@ -9,7 +9,12 @@ window.DEMOS = [
     "thumbnailAlt": "",
     "secondaryUrl": "https://emilysheepy.github.io/portfolio/learning-disabilities-knowledge-check/",
     "launchLabel": "Launch quick demo (2 questions)",
-    "secondaryLabel": "Explore full experience (5 questions)"
+    "secondaryLabel": "Explore full experience (5 questions)",
+    "tools": [
+      "React",
+      "TypeScript",
+      "Tailwind CSS"
+    ]
   },
   {
     "id": "perspectives",
@@ -18,7 +23,12 @@ window.DEMOS = [
     "description": "Explore different perspectives through an interactive quote and audio gallery.",
     "url": "https://emilysheepy.github.io/cloudberry-pairing-knowledges/braiding_knowledges_gallery.html",
     "thumbnail": "assets/perspectives.webp",
-    "thumbnailAlt": ""
+    "thumbnailAlt": "",
+    "tools": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ]
   },
   {
     "id": "publication",
@@ -27,7 +37,12 @@ window.DEMOS = [
     "description": "An editorial-style learning resource exploring workplace accommodations and responsibilities.",
     "url": "https://emilysheepy.github.io/portfolio/learning-disabilities-publication/",
     "thumbnail": "assets/publication.webp",
-    "thumbnailAlt": ""
+    "thumbnailAlt": "",
+    "tools": [
+      "React",
+      "TypeScript",
+      "Tailwind CSS"
+    ]
   },
   {
     "id": "reflection",
@@ -36,7 +51,10 @@ window.DEMOS = [
     "description": "A film-based workbook inviting youth to reflect on identity, future aspirations and community support.",
     "url": "https://docs.google.com/presentation/d/1B6NskcOAQFvzevRzzyoBFIfnK8ZZTkYZN_Gz4l6ANCg/template/preview",
     "thumbnail": "assets/reflection.webp",
-    "thumbnailAlt": ""
+    "thumbnailAlt": "",
+    "tools": [
+      "Google Slides"
+    ]
   },
   {
     "id": "job-aid",
@@ -45,7 +63,10 @@ window.DEMOS = [
     "description": "A printable decision tree supporting workplace accommodation decisions.",
     "url": "https://drive.google.com/file/d/1RskSWSn1wp9_y-y-oLF9MbAAf8mtFmFi/view?usp=drive_link",
     "thumbnail": "assets/job-aid.webp",
-    "thumbnailAlt": ""
+    "thumbnailAlt": "",
+    "tools": [
+      "Canva"
+    ]
   },
   {
     "id": "scenario",
@@ -54,7 +75,10 @@ window.DEMOS = [
     "description": "Practise responding to realistic situations through branching choices and contextual feedback.",
     "url": "https://emilysheepy.github.io/cloudberry-pairing-knowledges/Scenario%202/#/lessons/My_K-h0-YoDpQm05vbPlstM2YB7rX1KH",
     "thumbnail": "assets/scenario.webp",
-    "thumbnailAlt": ""
+    "thumbnailAlt": "",
+    "tools": [
+      "Articulate Storyline"
+    ]
   },
   {
     "id": "abcs-of-mpas",
@@ -65,7 +89,10 @@ window.DEMOS = [
     "thumbnail": "https://d1fe71kg83l872.cloudfront.net/v2/uploads/MPA-Media-gallery.png",
     "thumbnailAlt": "",
     "thumbnailPosition": "center center",
-    "launchLabel": "Watch video ↗"
+    "launchLabel": "Watch video ↗",
+    "tools": [
+      "Adobe After Effects"
+    ]
   },
   {
     "id": "hedgehogs-home",
@@ -75,7 +102,10 @@ window.DEMOS = [
     "url": "https://nfb-education-pilots.s3.ca-central-1.amazonaws.com/reel-lesson-hedgehogs-home/story.html",
     "thumbnail": "assets/hedgehogs-home.webp",
     "thumbnailAlt": "",
-    "launchLabel": "Launch lesson ↗"
+    "launchLabel": "Launch lesson ↗",
+    "tools": [
+      "Articulate Storyline"
+    ]
   },
   {
     "id": "knowledge-garden",
@@ -85,7 +115,10 @@ window.DEMOS = [
     "url": "https://oceanschool.nfb.ca/media/the-knowledge-garden",
     "thumbnail": "assets/knowledge-garden.webp",
     "thumbnailAlt": "",
-    "launchLabel": "Launch lesson ↗"
+    "launchLabel": "Launch lesson ↗",
+    "tools": [
+      "Articulate Storyline"
+    ]
   },
   {
     "id": "maybe-elephants",
@@ -95,7 +128,10 @@ window.DEMOS = [
     "url": "https://nfb-education-pilots.s3.ca-central-1.amazonaws.com/reel-lesson-maybe-elephants/story.html",
     "thumbnail": "assets/maybe-elephants.webp",
     "thumbnailAlt": "",
-    "launchLabel": "Launch lesson ↗"
+    "launchLabel": "Launch lesson ↗",
+    "tools": [
+      "Articulate Storyline"
+    ]
   },
   {
     "id": "kings-court",
@@ -105,6 +141,9 @@ window.DEMOS = [
     "url": "https://www.nfb.ca/education/kings-court-lesson-pack/",
     "thumbnail": "assets/kings-court.webp",
     "thumbnailAlt": "",
-    "launchLabel": "Explore lesson pack ↗"
+    "launchLabel": "Explore lesson pack ↗",
+    "tools": [
+      "Articulate Storyline"
+    ]
   }
 ];
